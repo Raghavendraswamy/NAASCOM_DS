@@ -1,0 +1,72 @@
+# Import necessary libraries
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+
+# Sample data (you can replace this with loading from a file)
+data = {
+    'Customer ID': [1],
+    'Age': [55],
+    'Gender': ['Male'],
+    'Item Purchased': ['Blouse'],
+    'Category': ['Clothing'],
+    'Purchase Amount (USD)': [53],
+    'Location': ['Kentucky'],
+    'Size': ['L'],
+    'Color': ['Gray'],
+    'Season': ['Winter'],
+    'Review Rating': [3.1],
+    'Subscription Status': ['Yes'],
+    'Shipping Type': ['Express'],
+    'Discount Applied': ['Yes'],
+    'Promo Code Used': ['Yes'],
+    'Previous Purchases': [14],
+    'Payment Method': ['Venmo'],
+    'Frequency of Purchases': ['Fortnightly']
+}
+
+# Convert the data to a pandas DataFrame
+df = pd.DataFrame(data)
+
+# Label Encoding for categorical columns (Gender, Item Purchased, etc.)
+label_encoder = LabelEncoder()
+
+# List of columns that are categorical
+categorical_columns = ['Gender', 'Item Purchased', 'Category', 'Location', 'Size', 'Color', 'Season',
+                       'Subscription Status', 'Shipping Type', 'Discount Applied', 'Promo Code Used', 
+                       'Payment Method', 'Frequency of Purchases']
+
+# Apply label encoding to categorical columns
+for column in categorical_columns:
+    df[column] = label_encoder.fit_transform(df[column])
+
+# Select features for clustering (e.g., numeric and encoded categorical data)
+features = df[['Age', 'Gender', 'Item Purchased', 'Category', 'Purchase Amount (USD)', 'Location', 'Size', 
+               'Color', 'Season', 'Review Rating', 'Subscription Status', 'Shipping Type', 'Discount Applied', 
+               'Promo Code Used', 'Previous Purchases', 'Payment Method', 'Frequency of Purchases']]
+
+# Standardize the features
+scaler = StandardScaler()
+scaled_features = scaler.fit_transform(features)
+
+# Apply KMeans clustering (let's assume 3 clusters for this example)
+kmeans = KMeans(n_clusters=3, random_state=42)
+df['Cluster'] = kmeans.fit_predict(scaled_features)
+
+# View the DataFrame with the cluster assignments
+print(df)
+
+# Optional: Visualizing the clusters (using PCA for dimensionality reduction to 2D)
+pca = PCA(n_components=2)
+reduced_features = pca.fit_transform(scaled_features)
+
+# Plotting the clusters
+plt.figure(figsize=(8, 6))
+plt.scatter(reduced_features[:, 0], reduced_features[:, 1], c=df['Cluster'], cmap='viridis', s=100, alpha=0.7)
+plt.title('K-Means Clusters')
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.colorbar(label='Cluster')
+plt.show()
