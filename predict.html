@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+
+<head> 
+	<meta charset="UTF=8"> 
+	<title> Prediction page</title> 
+	<link rel="shortcut icon" type="x-icon" href="https://i.ibb.co/VH7qsyW/Google-Chrome-icon-February-2022-svg.png"> 
+	<style> 
+		* { 
+			border-collapse: separate; 
+		} 
+
+		.main { 
+			position: absolute; 
+			top: 130px; 
+			right: 15%; 
+			width: 600px; 
+			background-color: #e6f1e6; 
+			border-radius: 15px; 
+			align-items: center; 
+			height: 72vh; 
+			border: 1.5px solid blue; 
+
+		} 
+
+		.menu-bar .table { 
+			margin-left: -150px; 
+
+		} 
+
+		h1 { 
+			font-family: Times New Roman; 
+			margin: 20px, 0; 
+			color: rgb(18, 17, 17); 
+			font-size: 30px; 
+			font-weight: lighter; 
+			animation-delay: 3.5s; 
+			font-style: italic; 
+		} 
+
+		input[type=submit] { 
+			background-color: rgb(127, 216, 131); 
+			border: 1px solid black; 
+			color: rgb(23, 22, 22); 
+			padding: 10px 16px; 
+			cursor: pointer; 
+			margin-top: 15px; 
+			border-radius: 10px; 
+		} 
+
+		input { 
+			padding: 20px, 0; 
+			margin: 20px, 0; 
+		} 
+
+		input:hover { 
+			color: rgb(127, 216, 131); 
+			background-color: rgb(23, 22, 22); 
+			; 
+		} 
+
+		p { 
+			color: #ffffff; 
+		} 
+
+		.row em { 
+			color: red; 
+			font-weight: bolder; 
+			font-style: italic; 
+		} 
+
+		.main .bold { 
+			font-style: italic; 
+		} 
+
+		.wrapper .predict { 
+			font-weight: bold; 
+
+		} 
+
+		.logo .title { 
+			font-size: 20px; 
+			margin-left: 30%; 
+
+		} 
+
+		.gfg { 
+			color: green; 
+			font-weight: bold; 
+		} 
+
+		.bold { 
+			font-size: 17px; 
+			font-weight: bold; 
+		} 
+	</style> 
+</head> 
+
+<body> 
+
+	<div class="wrapper"> 
+		<div class="top-bar"> 
+			<div class="logo"> 
+				<br><br><br> <br><br><br><br><br> 
+
+				
+
+			</div> 
+			<div class="menu-bar"> 
+
+			</div> 
+
+
+		</div> 
+
+		<p><em>WELCOME TO THE PREDICT PAGE</em></P> 
+		<div align='center' class="main"> 
+			<h1 class="gfg">Diabetic Project</h1> 
+			<br /> 
+			<form action="result"> 
+				<table> 
+					<tr> 
+						<td align="right"><span class="bold">pregencies:</span></td> 
+						<td align="left"><input type="text" name="n1"></td> 
+					</tr> 
+					<tr> 
+						<td align="right"><span class="bold">Insulin:</span></td> 
+						<td align="left"><input type="text" name="n2"></td> 
+					</tr> 
+					<tr> 
+						<td align="right"><span class="bold">BMI:</span></td> 
+						<td align="left"><input type="text" name="n3"></td> 
+					</tr> 
+					<tr> 
+						<td align="right"><span class="bold">Age:</span></td> 
+						<td align="left"><input type="text" name="n4"></td> 
+					</tr> 
+					<tr> 
+						<td align="right"><span class="bold">Glucose:</span></td> 
+						<td align="left"><input type="text" name="n5"></td> 
+					</tr> 
+					<tr> 
+						<td align="right"><span class="bold">Bloodpresure:</span></td> 
+						<td align="left"><input type="text" name="n6"></td> 
+					</tr> 
+                    <tr> 
+						<td align="right"><span class="bold">skinthickness:</span></td> 
+						<td align="left"><input type="text" name="n7"></td> 
+					</tr> 
+
+
+					<tr> 
+						<td align="right"><span class="bold">dbfunction:</span></td> 
+						<td align="left"><input type="text" name="n8"></td> 
+					</tr> 
+
+				</table> 
+				<br> 
+				<input class="predict" type="submit" value="PREDICT"> 
+			</form> 
+			<div class="row"> 
+				<h2><em>{{result2}}</em></h2> 
+			</div> 
+		</div> 
+</body> 
+
+</html>
