@@ -28,3 +28,32 @@ spark= SparkSession.builder.appName("Our First Spark Example").getOrCreate()
 
 spark
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+from pyspark.sql.types import StructType, StructField, IntegerType, StringType, DoubleType, DateType
+from datetime import date
+
+# Define schema
+schema = StructType([
+    StructField("EmpID", IntegerType(), True),
+    StructField("Name", StringType(), True),
+    StructField("Department", StringType(), True),
+    StructField("Salary", DoubleType(), True),
+    StructField("JoiningDate", DateType(), True)
+])
+
+# Sample data
+data = [
+    (101, "Alice", "HR", 60000.0, date(2020, 1, 15)),
+    (102, "Bob", "IT", 80000.0, date(2019, 6, 23)),
+    (103, "Charlie", "Finance", 75000.0, date(2021, 3, 1)),
+    (104, "David", "IT", 72000.0, date(2018, 7, 30)),
+    (105, "Eva", "HR", 58000.0, date(2022, 10, 12)),
+]
+
+# Create DataFrame
+emp_df = spark.createDataFrame(data, schema)
+
+# Register temporary view for SQL
+emp_df.createOrReplaceTempView("Employee")
